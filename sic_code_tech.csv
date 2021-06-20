@@ -1,0 +1,169 @@
+﻿SIC07 type,SIC07 Section,SIC07 code,5-digit SIC07 code,SIC07 heading,Lowest-level SIC07 identifier,Science and Technology indicator,Science and Technology category,Science and Technology topic
+Sub-class,C,19.20/1,19201,Mineral oil refining,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Sub-class,C,19.20/9,19209,Other treatment of petroleum products (excluding mineral oil refining/petrochemicals manufacture),1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.11,20110,Manufacture of industrial gases,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.12,20120,Manufacture of dyes and pigments,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.13,20130,Manufacture of other inorganic basic chemicals,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.14,20140,Manufacture of other organic basic chemicals,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.15,20150,Manufacture of fertilisers and nitrogen compounds,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.16,20160,Manufacture of plastics in primary forms,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.17,20170,Manufacture of synthetic rubber in primary forms,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Group,C,20.2,20200,Manufacture of pesticides and other agrochemical products,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Sub-class,C,20.30/1,20301,"Manufacture of paints, varnishes and similar coatings, mastics and sealants",1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Sub-class,C,20.30/2,20302,Manufacture of printing ink,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Sub-class,C,20.41/1,20411,Manufacture of soap and detergents,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Sub-class,C,20.41/2,20412,Manufacture of cleaning and polishing preparations,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.42,20420,Manufacture of perfumes and toilet preparations,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.51,20510,Manufacture of explosives,1,4,Other scientific/technological manufacture,Defence technologies
+Class,C,20.52,20520,Manufacture of glues,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.53,20530,Manufacture of essential oils,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Class,C,20.59,20590,Manufacture of other chemical products n.e.c.,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Group,C,20.6,20600,Manufacture of man-made fibres,1,4,Other scientific/technological manufacture,Chemical & Chemical Product manufacturing (exc. Pharmaceuticals)
+Group,C,21.1,21100,Manufacture of basic pharmaceutical products,1,2,Life Sciences & Healthcare,Pharmaceutical manufacture
+Group,C,21.2,21200,Manufacture of pharmaceutical preparations,1,2,Life Sciences & Healthcare,Pharmaceutical manufacture
+Class,C,25.21,25210,Manufacture of central heating radiators and boilers,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Group,C,25.3,25300,"Manufacture of steam generators, except central heating hot water boilers",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Group,C,25.4,25400,Manufacture of weapons and ammunition,1,4,Other scientific/technological manufacture,Defence technologies
+Class,C,26.11,26110,Manufacture of electronic components,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Class,C,26.12,26120,Manufacture of loaded electronic boards,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Group,C,26.2,26200,Manufacture of computers and peripheral equipment,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Sub-class,C,26.30/1,26301,Manufacture of telegraph and telephone apparatus and equipment,1,3,Publishing & Broadcasting,Communication Equipment manufacturing
+Sub-class,C,26.30/9,26309,Manufacture of communication equipment (other than telegraph and telephone apparatus and equipment),1,3,Publishing & Broadcasting,Communication Equipment manufacturing
+Group,C,26.4,26400,Manufacture of consumer electronics,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Sub-class,C,26.51/1,26511,"Manufacture of electronic instruments and appliances for measuring, testing, and navigation, except industrial process control equipment",1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Sub-class,C,26.51/2,26512,Manufacture of electronic industrial process control equipment,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Sub-class,C,26.51/3,26513,"Manufacture of non-electronic instruments and appliances for measuring, testing and navigation, except industrial process control equipment",1,4,Other scientific/technological manufacture,Precision engineering
+Sub-class,C,26.51/4,26514,Manufacture of non-electronic industrial process control equipment,1,4,Other scientific/technological manufacture,Precision engineering
+Class,C,26.52,26520,Manufacture of watches and clocks,1,4,Other scientific/technological manufacture,Precision engineering
+Group,C,26.6,26600,"Manufacture of irradiation, electromedical and electrotherapeutic equipment",1,2,Life Sciences & Healthcare,"Medical (exc. Pharmaceutical), optical & precision equipment manufacture"
+Sub-class,C,26.70/1,26701,Manufacture of optical precision instruments,1,2,Life Sciences & Healthcare,"Medical (exc. Pharmaceutical), optical & precision equipment manufacture"
+Sub-class,C,26.70/2,26702,Manufacture of photographic and cinematographic equipment,1,3,Publishing & Broadcasting,Communication Equipment manufacturing
+Group,C,26.8,26800,Manufacture of magnetic and optical media,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Class,C,27.11,27110,"Manufacture of electric motors, generators and transformers",1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.12,27120,Manufacture of electricity distribution and control apparatus,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Group,C,27.2,27200,Manufacture of batteries and accumulators,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.31,27310,Manufacture of fibre optic cables,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.32,27320,Manufacture of other electronic and electric wires and cables,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.33,27330,Manufacture of wiring devices,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Group,C,27.4,27400,Manufacture of electric lighting equipment,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.51,27510,Manufacture of electric domestic appliances,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,27.52,27520,Manufacture of non-electric domestic appliances,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Group,C,27.9,27900,Manufacture of other electrical equipment,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,28.11,28110,"Manufacture of engines and turbines, except aircraft, vehicle and cycle engines",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.12,28120,Manufacture of fluid power equipment,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Sub-class,C,28.13/1,28131,Manufacture of pumps,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Sub-class,C,28.13/2,28132,Manufacture of compressors,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.14,28140,Manufacture of other taps and valves,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.15,28150,"Manufacture of bearings, gears, gearing and driving elements",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.21,28210,"Manufacture of ovens, furnaces and furnace burners",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.22,28220,Manufacture of lifting and handling equipment,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.23,28230,Manufacture of office machinery and equipment (except computers and peripheral equipment),1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.24,28240,Manufacture of power-driven hand tools,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.25,28250,Manufacture of non-domestic cooling and ventilation equipment,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.29,28290,Manufacture of other general-purpose machinery n.e.c.,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Sub-class,C,28.30/1,28301,Manufacture of agricultural tractors,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,C,28.30/2,28302,Manufacture of agricultural and forestry machinery (other than agricultural tractors),1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,28.41,28410,Manufacture of metal forming machinery,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.49,28490,Manufacture of other machine tools,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.91,28910,Manufacture of machinery for metallurgy,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Sub-class,C,28.92/1,28921,Manufacture of machinery for mining,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Sub-class,C,28.92/2,28922,Manufacture of earthmoving equipment,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,C,28.92/3,28923,Manufacture of equipment for concrete crushing and screening roadworks,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.93,28930,"Manufacture of machinery for food, beverage and tobacco processing",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.94,28940,"Manufacture of machinery for textile, apparel and leather production",1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.95,28950,Manufacture of machinery for paper and paperboard production,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.96,28960,Manufacture of plastics and rubber machinery,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,28.99,28990,Manufacture of other special-purpose machinery n.e.c.,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Group,C,29.1,29100,Manufacture of motor vehicles,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,C,29.20/1,29201,Manufacture of bodies (coachwork) for motor vehicles (except caravans),1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,C,29.20/2,29202,Manufacture of trailers and semi-trailers,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,C,29.20/3,29203,Manufacture of caravans,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,29.31,29310,Manufacture of electrical and electronic equipment for motor vehicles,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,29.32,29320,Manufacture of other parts and accessories for motor vehicles,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,30.11,30110,Building of ships and floating structures,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,30.12,30120,Building of pleasure and sporting boats,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Group,C,30.2,30200,Manufacture of railway locomotives and rolling stock,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Group,C,30.3,30300,Manufacture of air and spacecraft and related machinery,1,4,Other scientific/technological manufacture,Aerospace engineering
+Group,C,30.4,30400,Manufacture of military fighting vehicles,1,4,Other scientific/technological manufacture,Defence technologies
+Class,C,30.91,30910,Manufacture of motorcycles,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,30.92,30920,Manufacture of bicycles and invalid carriages,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,30.99,30990,Manufacture of other transport equipment n.e.c.,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,32.12,32120,Manufacture of jewellery and related articles,1,4,Other scientific/technological manufacture,Precision engineering
+Sub-class,C,32.40/1,32401,Manufacture of professional and arcade games and toys,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Group,C,32.5,32500,Manufacture of medical and dental instruments and supplies,1,2,Life Sciences & Healthcare,"Medical (exc. Pharmaceutical), optical & precision equipment manufacture"
+Class,C,33.12,33120,Repair of machinery,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,C,33.13,33130,Repair of electronic and optical equipment,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Class,C,33.14,33140,Repair of electrical equipment,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,C,33.15,33150,Repair and maintenance of ships and boats,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Class,C,33.16,33160,Repair and maintenance of aircraft and spacecraft,1,4,Other scientific/technological manufacture,Aerospace engineering
+Class,C,33.17,33170,Repair and maintenance of other transport equipment,1,4,Other scientific/technological manufacture,"Automotive production (inc. vehicles, trailers, railroad, shipbuilding)"
+Sub-class,H,51.10/1,51101,Scheduled passenger air transport,1,5,Other scientific/technological services,Aerospace transport
+Sub-class,H,51.10/2,51102,Non-scheduled passenger air transport,1,5,Other scientific/technological services,Aerospace transport
+Class,H,51.21,51210,Freight air transport,1,5,Other scientific/technological services,Aerospace transport
+Class,H,51.22,51220,Space transport,1,5,Other scientific/technological services,Aerospace transport
+Class,J,58.11,58110,Book publishing,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Class,J,58.12,58120,Publishing of directories and mailing lists,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Class,J,58.13,58130,Publishing of newspapers,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,J,58.14/1,58141,Publishing of learned journals,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,J,58.14/2,58142,"Publishing of consumer, business and professional journals and periodicals",1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Class,J,58.19,58190,Other publishing activities,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Class,J,58.21,58210,Publishing of computer games,1,1,Digital Technologies,Digital & Computer Services
+Class,J,58.29,58290,Other software publishing,1,1,Digital Technologies,Digital & Computer Services
+Sub-class,J,59.11/1,59111,Motion picture production activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Sub-class,J,59.11/2,59112,Video production activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Sub-class,J,59.11/3,59113,Television programme production activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Class,J,59.12,59120,"Motion picture, video and television programme post-production activities",1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Sub-class,J,59.13/1,59131,Motion picture distribution activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Sub-class,J,59.13/2,59132,Video distribution activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Sub-class,J,59.13/3,59133,Television programme distribution activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Class,J,59.14,59140,Motion picture projection activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Group,J,59.2,59200,Sound recording and music publishing activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Group,J,60.1,60100,Radio broadcasting,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Group,J,60.2,60200,Television programming and broadcasting activities,1,3,Publishing & Broadcasting,Audio-visual Broadcasting
+Group,J,61.1,61100,Wired telecommunications activities,1,3,Publishing & Broadcasting,Telecommunications
+Group,J,61.2,61200,Wireless telecommunications activities,1,3,Publishing & Broadcasting,Telecommunications
+Group,J,61.3,61300,Satellite telecommunications activities,1,3,Publishing & Broadcasting,Telecommunications
+Group,J,61.9,61900,Other telecommunications activities,1,3,Publishing & Broadcasting,Telecommunications
+Sub-class,J,62.01/1,62011,Ready-made interactive leisure and entertainment software development,1,1,Digital Technologies,Digital & Computer Services
+Sub-class,J,62.01/2,62012,Business and domestic software development,1,1,Digital Technologies,Digital & Computer Services
+Class,J,62.02,62020,Computer consultancy activities,1,1,Digital Technologies,Digital & Computer Services
+Class,J,62.03,62030,Computer facilities management activities,1,1,Digital Technologies,Digital & Computer Services
+Class,J,62.09,62090,Other information technology and computed service activities,1,1,Digital Technologies,Digital & Computer Services
+Class,J,63.11,63110,"Data processing, hosting and related activities",1,1,Digital Technologies,Digital & Computer Services
+Class,J,63.12,63120,Web portals,1,1,Digital Technologies,Digital & Computer Services
+Class,J,63.91,63910,News agency activities,1,3,Publishing & Broadcasting,Telecommunications
+Class,J,63.99,63990,Other information service activities n.e.c.,1,3,Publishing & Broadcasting,Telecommunications
+Sub-class,M,71.11/1,71111,Architectural activities,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Sub-class,M,71.11/2,71112,Urban planning and landscape architectural activities,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Sub-class,M,71.12/1,71121,Engineering design activities for industrial process and production,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Sub-class,M,71.12/2,71122,Engineering related scientific and technical consulting activities,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Sub-class,M,71.12/9,71129,Other engineering activities (not including engineering design for industrial process and production or engineering related scientific and technical consulting activities),1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Group,M,71.2,71200,Technical testing and analysis,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Class,M,72.11,72110,Research and experimental development on biotechnology,1,2,Life Sciences & Healthcare,Biotechnology research
+Class,M,72.19,72190,Other research and experimental development on natural sciences and engineering,1,5,Other scientific/technological services,Other research and development
+Group,M,72.2,72200,Research and experimental development on social sciences and humanities,1,5,Other scientific/technological services,Other research and development
+Class,M,73.11,73110,Advertising agencies,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Class,M,73.12,73120,Media representation,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Group,M,73.2,73200,Market research and public opinion polling,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Group,M,74.1,74100,Specialised design activities,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,M,74.20/1,74201,Portrait photographic activities,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,M,74.20/2,74202,Other specialist photography (not including portrait photography),1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,M,74.20/3,74203,Film processing,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,M,74.20/9,74209,Other photographic activities (not including portrait and other specialist photography and film processing) n.e.c.,1,3,Publishing & Broadcasting,"Publishing, Marketing & Graphic Design"
+Sub-class,M,74.90/1,74901,Environmental consulting activities,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Sub-class,M,74.90/2,74902,Quantity surveying activities,1,5,Other scientific/technological services,"Architecture, Engineering & Quantity Surveying"
+Division,M,75,75000,Veterinary activities,1,2,Life Sciences & Healthcare,Healthcare services
+Class,P,85.41,85410,Post-secondary non-tertiary education,1,5,Other scientific/technological services,Higher education
+Sub-class,P,85.42/1,85421,First-degree level higher education,1,5,Other scientific/technological services,Higher education
+Sub-class,P,85.42/2,85422,Post-graduate level higher education,1,5,Other scientific/technological services,Higher education
+Sub-class,Q,86.10/1,86101,Hospital activities,1,2,Life Sciences & Healthcare,Healthcare services
+Sub-class,Q,86.10/2,86102,Medical nursing home activities,1,2,Life Sciences & Healthcare,Healthcare services
+Class,Q,86.21,86210,General medical practice activities,1,2,Life Sciences & Healthcare,Healthcare services
+Class,Q,86.22,86220,Specialist medical practice activities,1,2,Life Sciences & Healthcare,Healthcare services
+Class,Q,86.23,86230,Dental practice activities,1,2,Life Sciences & Healthcare,Healthcare services
+Group,Q,86.9,86900,Other human health activities,1,2,Life Sciences & Healthcare,Healthcare services
+Class,S,95.11,95110,Repair of computers and peripheral equipment,1,1,Digital Technologies,Computer & Electronic manufacturing (inc. peripherals)
+Class,S,95.12,95120,Repair of communication equipment,1,3,Publishing & Broadcasting,Communication Equipment manufacturing
+Class,S,95.21,95210,Repair of consumer electronics,1,4,Other scientific/technological manufacture,Electrical Machinery manufacturing
+Class,S,95.22,95220,Repair of household appliances and home and garden equipment,1,4,Other scientific/technological manufacture,Non-electrical Machinery manufacturing
+Class,S,95.25,95250,"Repair of watches, clocks and jewellery",1,4,Other scientific/technological manufacture,Precision engineering
