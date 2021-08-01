@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <title>HHI_EnR_ttwa_England_for_R</title>
+    <layers>
+        <layer>
+            <datasource>
+                <type>GeoJSON</type>
+                <path>/Users/fangzeqiang/Github/Master-Dissertation/Dataset/Spatial/HHI_EnR_ttwa_England_for_R.geojson</path>
+            </datasource>
+            <layername>HHI_EnR_ttwa_England_for_R</layername>
+            <title/>
+            <variable_order>
+                <time_ids>
+                    <id>time 0</id>
+                </time_ids>
+                <var>POLY_ID</var>
+                <var>OBJECTID</var>
+                <var>TTWA11CD</var>
+                <var>TTWA11NM</var>
+                <var>
+                    Shape__Area
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    Shape__Length
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>ttwa</var>
+                <var>ttwa_code</var>
+                <var>
+                    entry_total
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    grand_total
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    hhi
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    entry_rate
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    assets
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>CL</var>
+            </variable_order>
+            <custom_classifications/>
+            <weights_entries>
+                <weights>
+                    <title>HHI_EnR_ttwa_England_for_R</title>
+                    <default/>
+                    <meta_info>
+                        <weights_type>queen</weights_type>
+                        <order>1</order>
+                        <inc_lower_orders>false</inc_lower_orders>
+                        <path>HHI_EnR_ttwa_England_for_R.gal</path>
+                        <id_variable>POLY_ID</id_variable>
+                        <symmetry>symmetric</symmetry>
+                        <num_observations>149</num_observations>
+                        <min_neighbors>0</min_neighbors>
+                        <max_neighbors>11</max_neighbors>
+                        <mean_neighbors>4.8456375838926178</mean_neighbors>
+                        <median_neighbors>5</median_neighbors>
+                        <non_zero_perc>3.2521057610017565</non_zero_perc>
+                    </meta_info>
+                </weights>
+            </weights_entries>
+            <default_vars>
+                <default_var>
+                    <name>entry_rate</name>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+            </default_vars>
+        </layer>
+    </layers>
+</project>
