@@ -1,4 +1,5 @@
-CREATE TABLE tech_cluster_hhtech_cluster_hh
+DROP TABLE IF EXISTS tech_cluster_hh;
+CREATE TABLE tech_cluster_hh
 SELECT t2.ttwa, t2.birth_year, sum(t2.sub_hh) as hh
 FROM (SELECT t0.ttwa, 
 							t0.birth_year,

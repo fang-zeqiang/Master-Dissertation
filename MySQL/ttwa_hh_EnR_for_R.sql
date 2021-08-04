@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tech_cluster_hh_enr_ttwa_for_r;
 CREATE TABLE tech_cluster_hh_enr_ttwa_for_r
 SELECT *	FROM	(select	t1.ttwa
 									,t1.ttwa_code
