@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <title>year_ttwa_enR_hh_den</title>
+    <layers>
+        <layer>
+            <datasource>
+                <type>GeoJSON</type>
+                <path>year_ttwa_enR_hh_den.geojson</path>
+            </datasource>
+            <layername>year_ttwa_enR_hh_den</layername>
+            <title/>
+            <variable_order>
+                <time_ids>
+                    <id>time 0</id>
+                </time_ids>
+                <var>year_ttwa</var>
+                <var>POLY_ID</var>
+                <var>TTWA11CD</var>
+                <var>ttwa</var>
+                <var>year</var>
+                <var>
+                    entry_rate
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    hh
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    average_assets
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    density
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>firms</var>
+                <var>
+                    area_km
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+            </variable_order>
+            <custom_classifications/>
+            <weights_entries>
+                <weights>
+                    <title>year_ttwa_enR_hh_den</title>
+                    <default/>
+                    <meta_info>
+                        <weights_type>queen</weights_type>
+                        <order>1</order>
+                        <inc_lower_orders>false</inc_lower_orders>
+                        <path>year_ttwa_enR_hh_den.gal</path>
+                        <id_variable>POLY_ID</id_variable>
+                        <symmetry>symmetric</symmetry>
+                        <num_observations>3089</num_observations>
+                        <min_neighbors>20</min_neighbors>
+                        <max_neighbors>251</max_neighbors>
+                        <mean_neighbors>120.78407251537715</mean_neighbors>
+                        <median_neighbors>122</median_neighbors>
+                        <non_zero_perc>3.9101350765742033</non_zero_perc>
+                    </meta_info>
+                </weights>
+            </weights_entries>
+            <default_vars>
+                <default_var>
+                    <name>hh</name>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name>entry_rate</name>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name>entry_rate</name>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+            </default_vars>
+        </layer>
+    </layers>
+</project>

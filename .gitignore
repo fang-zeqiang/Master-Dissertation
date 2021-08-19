@@ -6,3 +6,6 @@ Dataset/OC_3.1.dta
 Dataset/Code_History_Database_(June_2021)_UK/Code_History_Database_(June_2021)_UK.accdb
 Dataset/Code_History_Database_(June_2021)_UK/Code_History_Database_(June_2021)_UK.mdb
 Dataset/year_ttwa_enR_hh_den.csv
+.Rproj.user
+Dataset/Spatial/dfm_1998.geojson
+Dataset/Spatial/year_ttwa_enR_hh_den.geojson

@@ -1,0 +1,350 @@
+---
+title: "Morans-I-and-GWR"
+author: "Franklin"
+date: "18/08/2021"
+output: html_document
+---
+
+```{r,eval=FALSE}
+# environment prepare
+library(tidyverse)
+library(data.table)
+library(sp)
+library(sf)
+library(table1)
+library(tm)
+library(spatstat)
+library(here)
+library(sp)
+library(rgeos)
+# library(maptools)
+library(tmap)
+library(sf)
+library(geojson)
+library(geojsonio)
+library(tmaptools)
+library(RColorBrewer)
+library(spdep) 
+library(lubridate)
+```
+
+
+# Data Read
+
+1.the index dataset
+```{r}
+# read data in R
+raw_data = read.csv(here::here("Dataset","df_hh_EnR_ttwaName_asset_not_drop.csv"))
+
+# you can have a overview of this dataset
+print("The number of rows is: ")
+nrow(raw_data)
+print("The number of columns is: ")
+ncol(raw_data)
+print("70 of all varriables are:")
+head(names(raw_data),n = 70)
+```
+
+2. spatial dataset
+```{r}
+# import spatial dataset
+
+eng_ttwa = st_read(here::here("Dataset","Spatial","eng_ttwa_boundary.geojson"))
+
+# plot the map
+plot(st_geometry(eng_ttwa))
+```
+
+try to merge, but not a spatial type
+```{r}
+dfm = merge(raw_data,eng_ttwa,by.x="ttwa_code",by.y="TTWA11CD",all = TRUE)
+```
+
+# Data Prepare
+
+```{r}
+# select year
+df_1998 = raw_data %>% filter(year==1998)
+df_2008 = raw_data %>% filter(year==2008)
+df_2018 = raw_data %>% filter(year==2018)
+# df_2017_2018 = raw_data %>% filter(year==2017 | year==2018)
+
+# merge
+dfm_1998 = merge(eng_ttwa,df_1998,by.x="TTWA11CD",by.y="ttwa_code",all.x = TRUE)
+dfm_2008 = merge(eng_ttwa,df_2008,by.x="TTWA11CD",by.y="ttwa_code",all.x = TRUE)
+dfm_2018 = merge(eng_ttwa,df_2018,by.x="TTWA11CD",by.y="ttwa_code",all.x = TRUE)
+# dfm_2017_2018 = merge(eng_ttwa,df_2017_2018,by.x="TTWA11CD",by.y="ttwa_code",all.x = TRUE)
+dfm_all = merge(eng_ttwa,raw_data,by.x="TTWA11CD",by.y="ttwa_code",all.x = TRUE)
+
+# n/a -> 0
+dfm_1998 = dfm_1998 %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
+dfm_2008 = dfm_2008 %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
+dfm_2018 = dfm_2018 %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
+# dfm_2017_2018 = dfm_2017_2018 %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
+dfm_all_dna = dfm_all %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
+
+# projection
+
+dfm_1998 = dfm_1998 %>% st_transform(.,27700)
+dfm_2008 = dfm_2008 %>% st_transform(.,27700)
+dfm_2018 = dfm_2018 %>% st_transform(.,27700)
+
+```
+
+
+```{r}
+
+cus_break = c(0.00,0.007,0.01,0.013,0.03,0.035,0.077,0.12153,0.14,0.16,0.32)
+# library(viridis)
+tmap_mode("plot")
+```
+# Distributiom
+
+```{r}
+df = dfm_1998
+map_var = "entry_rate"
+spatial_var = "ttwa"
+legend_name = "Entry Rate (1998)"
+title_name = "The Distribution of the Entry Rate of the England Tech Clusters(ttwa) in 1998"
+
+enR_1998_map = tm_shape( df )+ 
+        tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              position = c("left","center"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+        tm_scale_bar(position=c("left", "center")
+                    )+ 
+        tm_fill(col = map_var,
+              palette = "BuPu", n = 12,
+              breaks = cus_break, 
+              title=legend_name,
+              legend.hist = TRUE,
+              legend.hist.position = c("left", "center")
+              )+ 
+        tm_layout(main.title = "",main.title.size = .85,
+                 frame=FALSE,
+                 legend.outside =TRUE,
+                 legend.hist.width = 1.2,
+                 legend.hist.height = .25 )+
+        tm_borders(col = "#D2D2D2", lwd = .5, lty = "solid", alpha = NA)
+        
+enR_1998_map
+```
+
+
+```{r}
+df = dfm_2008
+map_var = "entry_rate"
+spatial_var = "ttwa"
+legend_name = "Entry Rate (2008)"
+title_name = "The Distribution of the Entry Rate of the England Tech Clusters(ttwa) in 2008"
+
+
+enR_2008_map = tm_shape( df )+ 
+        tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              position = c("left","center"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+        tm_scale_bar(position=c("left", "center")
+                    )+ 
+        tm_fill(col = map_var,
+              palette = "BuPu", n = 12,
+              breaks = cus_break, 
+              title=legend_name,
+              legend.hist = TRUE,
+              legend.hist.position = c("left", "center")
+              )+ 
+        tm_layout(main.title = "",main.title.size = .85,
+                 frame=FALSE,
+                 legend.outside =TRUE,
+                 legend.hist.width = 1.2,
+                 legend.hist.height = .25 )+
+        tm_borders(col = "#D2D2D2", lwd = .5, lty = "solid", alpha = NA)
+        
+enR_2008_map
+```
+
+```{r}
+df = dfm_2018
+map_var = "entry_rate"
+spatial_var = "ttwa"
+legend_name = "Entry Rate (2018)"
+title_name = "The Distribution of the Entry Rate of the England Tech Clusters(ttwa) in 2018"
+
+
+enR_2018_map = tm_shape( df )+ 
+        tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              position = c("left","center"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+        tm_scale_bar(position=c("left", "center")
+                    )+ 
+        tm_fill(col = map_var,
+              palette = "BuPu", n = 12,
+              breaks = cus_break, 
+              title=legend_name,
+              legend.hist = TRUE,
+              legend.hist.position = c("left", "center")
+              )+ 
+        tm_layout(main.title = "",main.title.size = .85,
+                 frame=FALSE,
+                 legend.outside =TRUE,
+                 legend.hist.width = 1.2,
+                 legend.hist.height = .25 )+
+        tm_borders(col = "#D2D2D2", lwd = .5, lty = "solid", alpha = NA)
+        
+enR_2018_map
+```
+
+```{r}
+enR_tmap = tmap_arrange(enR_1998_map,enR_2008_map,enR_2018_map,ncol = 1)
+
+enR_tmap
+
+# enR_tmap %>% tmap_save(.,here("Img","map_entry_rate_1998_to_2018.png"),dpi = 300)
+```
+
+# Add the Density Variables (1998, 2008 & 2018)
+
+```{r}
+dfm_1998 = dfm_1998 %>% 
+    mutate(area = st_area(geometry))%>%
+    mutate(area_km = units::set_units(area,km^2))%>%
+    mutate(density = firms / area_km)%>%
+    select(TTWA11CD,ttwa,year,entry_rate,hh,average_assets,density,firms,area_km)
+
+dfm_2008 = dfm_2008 %>% 
+    mutate(area = st_area(geometry))%>%
+    mutate(area_km = units::set_units(area,km^2))%>%
+    mutate(density = firms / area_km)%>%
+    select(TTWA11CD,ttwa,year,entry_rate,hh,average_assets,density,firms,area_km)
+
+dfm_2018 = dfm_2018 %>% 
+    mutate(area = st_area(geometry))%>%
+    mutate(area_km = units::set_units(area,km^2))%>%
+    mutate(density = firms / area_km)%>%
+    select(TTWA11CD,ttwa,year,entry_rate,hh,average_assets,density,firms,area_km)
+
+dfm_1998 = dfm_1998 %>% replace_na(list(density=0))
+dfm_2008 = dfm_2008 %>% replace_na(list(density=0))
+dfm_2018 = dfm_2018 %>% replace_na(list(density=0))
+```
+
+Output .geojson
+```{r}
+here()
+
+st_write(obj = dfm_1998, dsn = here("Dataset","Spatial","dfm_1998.geojson"))
+
+st_write(obj = dfm_2008, dsn = here("Dataset","Spatial","dfm_2008.geojson"))
+
+st_write(obj = dfm_2018, dsn = here("Dataset","Spatial","dfm_2018.geojson"))
+```
+
+
+# Centroids and neighbour list
+
+```{r}
+# projection
+
+dfm_1998 = dfm_1998 %>% st_transform(.,27700)
+dfm_2008 = dfm_2008 %>% st_transform(.,27700)
+dfm_2018 = dfm_2018 %>% st_transform(.,27700)
+
+coordsW_1998 = dfm_1998%>%
+   st_centroid()%>%
+   st_geometry()
+
+coordsW_2008 = dfm_2008%>%
+   st_centroid()%>%
+   st_geometry()
+
+coordsW_2018 = dfm_2018%>%
+   st_centroid()%>%
+   st_geometry()
+
+Ettwa_nb_1998 = dfm_1998 %>% 
+  poly2nb(., queen=T)
+
+Ettwa_nb_2008 = dfm_2008 %>% 
+  poly2nb(., queen=T)
+
+Ettwa_nb_2018 = dfm_2018 %>% 
+  poly2nb(., queen=T)
+
+df = dfm_2018
+coordsW = coordsW_2018
+nb = Ettwa_nb_2018
+
+plot(df$geometry)
+plot(nb,coordsW,col="blue",add=T)
+
+# plot(coordsW,axes=TRUE)
+```
+
+```{r}
+#Create a spatial weights object from these weights
+Ettwa_1998.wl = nb2listw(Ettwa_nb_1998, style="C",zero.policy = TRUE)
+# head(Eng_ttwa.wl$neighbours)
+
+Ettwa_2008.wl = nb2listw(Ettwa_nb_2008, style="C",zero.policy = TRUE)
+
+Ettwa_2018.wl = nb2listw(Ettwa_nb_2018, style="C",zero.policy = TRUE)
+```
+
+# Spatial autocorrelation: Global Moran'I Index
+
+In order to calculate the three time periods global Moran's I 
+
+1.  Morans'I in entry rate in 1998
+```{r}
+I_Ettwa_enR_1998 = dfm_1998 %>%
+  pull(density) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_1998.wl,zero.policy = TRUE)
+
+I_Ettwa_enR_1998 %>%  head()
+```
+2. Morans'I in entry rate in 2008
+```{r}
+I_Ettwa_enR_2008 = dfm_2008 %>%
+  pull(entry_rate) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_2008.wl,zero.policy = TRUE)
+
+head(I_Ettwa_enR_2008)
+```
+3. Morans'I in entry rate in 2008
+```{r}
+I_Ettwa_enR_2018 = dfm_2018 %>%
+  pull(entry_rate) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_2018.wl,zero.policy = TRUE)
+
+head(I_Ettwa_enR_2018)
+```
+
+# Table 2 Spatio-temporal dynamics cluster analysis
+
+|Year| Moran's Index|p value|z-score|
+|----|:------:| :---:|---:|
+|1998 |  0.436|  0.00 |10.077
+|2008 |  0.062|  0.08 |1.3483
+|2018 |  0.056|  0.10 |1.2382   
+
+
