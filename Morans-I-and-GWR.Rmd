@@ -84,7 +84,6 @@ dfm_2018 = dfm_2018 %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
 dfm_all_dna = dfm_all %>% replace_na(list(entry_rate=0,hh=0,average_assets=0))
 
 # projection
-
 dfm_1998 = dfm_1998 %>% st_transform(.,27700)
 dfm_2008 = dfm_2008 %>% st_transform(.,27700)
 dfm_2018 = dfm_2018 %>% st_transform(.,27700)
@@ -249,7 +248,8 @@ Output .geojson
 ```{r}
 here()
 
-st_write(obj = dfm_1998, dsn = here("Dataset","Spatial","dfm_1998.geojson"))
+dfm_1998 %>% st_transform(.,27700)
+st_write(obj = dfm_1998, dsn = here("Dataset","Spatial","dfm_1998_for_st_trans.geojson"))
 
 st_write(obj = dfm_2008, dsn = here("Dataset","Spatial","dfm_2008.geojson"))
 
@@ -299,52 +299,620 @@ plot(nb,coordsW,col="blue",add=T)
 
 ```{r}
 #Create a spatial weights object from these weights
-Ettwa_1998.wl = nb2listw(Ettwa_nb_1998, style="C",zero.policy = TRUE)
-# head(Eng_ttwa.wl$neighbours)
+Ettwa_1998.wl = nb2listw(Ettwa_nb_1998, style="W",zero.policy = TRUE)
 
-Ettwa_2008.wl = nb2listw(Ettwa_nb_2008, style="C",zero.policy = TRUE)
+Ettwa_2008.wl = nb2listw(Ettwa_nb_2008, style="W",zero.policy = TRUE)
 
-Ettwa_2018.wl = nb2listw(Ettwa_nb_2018, style="C",zero.policy = TRUE)
+Ettwa_2018.wl = nb2listw(Ettwa_nb_2018, style="W",zero.policy = TRUE)
 ```
 
 # Spatial autocorrelation: Global Moran'I Index
+
+## Global Moran's Index
 
 In order to calculate the three time periods global Moran's I 
 
 1.  Morans'I in entry rate in 1998
 ```{r}
 I_Ettwa_enR_1998 = dfm_1998 %>%
-  pull(density) %>% 
+  pull(entry_rate) %>% 
   as.vector() %>% 
   moran.test(.,Ettwa_1998.wl,zero.policy = TRUE)
 
-I_Ettwa_enR_1998 %>%  head()
-```
-2. Morans'I in entry rate in 2008
-```{r}
 I_Ettwa_enR_2008 = dfm_2008 %>%
   pull(entry_rate) %>% 
   as.vector() %>% 
   moran.test(.,Ettwa_2008.wl,zero.policy = TRUE)
 
-head(I_Ettwa_enR_2008)
-```
-3. Morans'I in entry rate in 2008
-```{r}
 I_Ettwa_enR_2018 = dfm_2018 %>%
   pull(entry_rate) %>% 
   as.vector() %>% 
   moran.test(.,Ettwa_2018.wl,zero.policy = TRUE)
 
+```
+
+2. Morans'I in entry rate in 2008
+```{r}
+I_Ettwa_enR_1998 %>%  head()
+print("---------------------------------------------------------------")
+head(I_Ettwa_enR_2008)
+print("---------------------------------------------------------------")
 head(I_Ettwa_enR_2018)
 ```
 
-# Table 2 Spatio-temporal dynamics cluster analysis
+```{r}
+I_Ettwa_den_1998 = dfm_1998 %>%
+  pull(density) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_1998.wl,zero.policy = TRUE)
+
+I_Ettwa_den_2008 = dfm_2008 %>%
+  pull(density) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_2008.wl,zero.policy = TRUE)
+
+I_Ettwa_den_2018 = dfm_2018 %>%
+  pull(density) %>% 
+  as.vector() %>% 
+  moran.test(.,Ettwa_2018.wl,zero.policy = TRUE)
+
+head(I_Ettwa_den_1998)
+print("---------------------------------------------------------------")
+head(I_Ettwa_den_2008)
+print("---------------------------------------------------------------")
+head(I_Ettwa_den_2018)
+
+```
+
+Table 2 Spatio-temporal dynamics cluster analysis
 
 |Year| Moran's Index|p value|z-score|
 |----|:------:| :---:|---:|
-|1998 |  0.436|  0.00 |10.077
+|1998 |  0.118|  0.00 |2.4385
 |2008 |  0.062|  0.08 |1.3483
 |2018 |  0.056|  0.10 |1.2382   
+
+Table 3 Spatio-temporal density cluster analysis
+
+|Year| Moran's Index|p value|z-score|
+|----|:------:| :---:|---:|
+|1998 0.4359|  0.00 | 10.07783
+|2008 |  0.3248|  0.00 | 7.54488
+|2018 |  0.1891|  0.00| 4.982051
+
+## Global G test
+
+Getis Ord General G…? This tells us whether high or low values are clustering. If **G > Expected = High values clustering**; if **G < expected = low values clustering**
+```{r}
+
+# take 1998 for example
+G_Ettwa_Global_enR = dfm_1998 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  globalG.test(., Ettwa_1998.wl,zero.policy = T)
+
+G_Ettwa_Global_enR
+
+```
+This condition: G > E = high values means that high values tending to clustering in 1998
+
+## Local Moran's Index
+
+### Data Process
+```{r}
+# entry rate
+I_Ettwa_Local_enR_1998 =  dfm_1998 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_1998.wl,zero.policy = T)%>%
+  as_tibble()
+
+I_Ettwa_Local_enR_2008 =  dfm_2008 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_2008.wl,zero.policy = T)%>%
+  as_tibble()
+
+I_Ettwa_Local_enR_2018 =  dfm_2018 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_2018.wl,zero.policy = T)%>%
+  as_tibble()
+
+
+# density
+I_Ettwa_Local_den_1998 <- dfm_1998 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_1998.wl,zero.policy = T)%>%
+  as_tibble()
+
+I_Ettwa_Local_den_2008 <- dfm_2008 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_2008.wl,zero.policy = T)%>%
+  as_tibble()
+
+I_Ettwa_Local_den_2018 <- dfm_2018 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localmoran(., Ettwa_2018.wl,zero.policy = T)%>%
+  as_tibble()
+
+
+#what does the output (the localMoran object) look like?
+slice_head(I_Ettwa_Local_den_1998, n=5)
+```
+
+add Local Moran's I Indicators
+```{r}
+dfm_1998 <- dfm_1998 %>%
+  mutate(entry_rate_I = as.numeric(I_Ettwa_Local_enR_1998$Ii))%>%
+  mutate(entry_rate_Iz =as.numeric(I_Ettwa_Local_enR_1998$Z.Ii))%>%
+  mutate(density_I =as.numeric(I_Ettwa_Local_den_1998$Ii))%>%
+  mutate(density_Iz =as.numeric(I_Ettwa_Local_den_1998$Z.Ii))
+
+dfm_1998 = dfm_1998 %>%   
+  replace_na(list(entry_rate_I=0,entry_rate_Iz=0,density_I=0,density_Iz=0))
+
+dfm_2008 <- dfm_2008 %>%
+  mutate(entry_rate_I = as.numeric(I_Ettwa_Local_enR_2008$Ii))%>%
+  mutate(entry_rate_Iz =as.numeric(I_Ettwa_Local_enR_2008$Z.Ii))%>%
+  mutate(density_I =as.numeric(I_Ettwa_Local_den_2008$Ii))%>%
+  mutate(density_Iz =as.numeric(I_Ettwa_Local_den_2008$Z.Ii))
+
+dfm_2008 = dfm_2008 %>%   
+  replace_na(list(entry_rate_I=0,entry_rate_Iz=0,density_I=0,density_Iz=0))
+
+dfm_2018 <- dfm_2018 %>%
+  mutate(entry_rate_I = as.numeric(I_Ettwa_Local_enR_2018$Ii))%>%
+  mutate(entry_rate_Iz =as.numeric(I_Ettwa_Local_enR_2018$Z.Ii))%>%
+  mutate(density_I =as.numeric(I_Ettwa_Local_den_2018$Ii))%>%
+  mutate(density_Iz =as.numeric(I_Ettwa_Local_den_2018$Z.Ii))
+
+dfm_2018 = dfm_2018 %>%   
+  replace_na(list(entry_rate_I=0,entry_rate_Iz=0,density_I=0,density_Iz=0))
+```
+
+### Map making for LISA
+
+- data points >2.58 or <-2.58 standard deviations away from the mean are significant at the 99% level (<1% chance that autocorrelation not present);
+- >1.96 - <2.58 or <-1.96 to >-2.58 standard deviations are significant at the 95% level (<5% change that autocorrelation not present).
+- >1.65 = 90% etc.
+
+```{r}
+breaks1 = c(-1000,-2.58,-1.96,-1.65,1.65,1.96,2.58,1000)
+MoranColours = rev(brewer.pal(8, "RdGy"))
+```
+
+```{r}
+# breaks1 = c(-5,-1,-0.7,-0.5,-0.1,0.1,0.5,0.7,1,5)
+breaks1<-c(-1000,-2.58,-1.96,-1.65,1.65,1.96,2.58,1000)
+tmap_mode("plot")
+
+df = dfm_1998 %>% st_transform(.,27700)
+legend_name = "Local Moran's I (1998)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+Iz_map_1998 = tm_shape(df) +
+    tm_polygons("density_Iz",
+        style="fixed",
+        breaks=breaks1,
+        palette=MoranColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              size = 2.5,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+    tm_scale_bar(position=c("right", "bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+Iz_map_1998
+```
+
+```{r}
+df = dfm_2008
+legend_name = "Local Moran's I (2008)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+Iz_map_2008 = tm_shape(df) +
+    tm_polygons("density_Iz",
+        style="fixed",
+        breaks=breaks1,
+        palette=MoranColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              size = 2.5,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+    tm_scale_bar(position=c("right", "bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+Iz_map_2008
+```
+
+```{r}
+df = dfm_2018
+legend_name = "Local Moran's I (2018)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+Iz_map_2018 = tm_shape(df) +
+    tm_polygons("density_Iz",
+        style="fixed",
+        breaks=breaks1,
+        palette=MoranColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              size = 2.5,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+    tm_scale_bar(position=c("right", "bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+Iz_map_2018
+```
+
+```{r}
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(
+        nrow = 2,
+        ncol = 3,
+        heights = c(0.1, 0.9))))
+
+grid.text("Entry Rate in Travel to Work Area in England", vp = viewport(layout.pos.row = 1, layout.pos.col = 1:3))
+print(Iz_map_1998, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(Iz_map_2008, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
+print(Iz_map_2018, vp = viewport(layout.pos.row = 2, layout.pos.col = 3))
+```
+
+
+## Gi-Score
+
+### Data Process
+calculate the Gi-Score
+```{r}
+# Gi-Score
+
+# entry rate
+G_Ettwa_Local_enR_1998 =  dfm_1998 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localG(., Ettwa_1998.wl,zero.policy = T)
+
+G_Ettwa_Local_enR_2008 =  dfm_2008 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localG(., Ettwa_2008.wl,zero.policy = T)
+
+G_Ettwa_Local_enR_2018 =  dfm_2018 %>%
+  pull(entry_rate) %>%
+  as.vector()%>%
+  localG(., Ettwa_2018.wl,zero.policy = T)
+
+# density
+G_Ettwa_Local_den_1998 =  dfm_1998 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localG(., Ettwa_1998.wl,zero.policy = T)
+
+G_Ettwa_Local_den_2008 =  dfm_2008 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localG(., Ettwa_2008.wl,zero.policy = T)
+
+G_Ettwa_Local_den_2018 =  dfm_2018 %>%
+  pull(density) %>%
+  as.vector()%>%
+  localG(., Ettwa_2018.wl,zero.policy = T)
+```
+
+add columns in dataset
+```{r}
+# entry rate
+dfm_1998 = dfm_1998%>%
+  mutate(entry_rate_G = as.numeric(G_Ettwa_Local_enR_1998))%>% 
+  replace_na(list(entry_rate_G=0))
+
+dfm_2008 = dfm_2008%>%
+  mutate(entry_rate_G = as.numeric(G_Ettwa_Local_enR_2008))%>% 
+  replace_na(list(entry_rate_G=0))
+
+dfm_2018 = dfm_2018%>%
+  mutate(entry_rate_G = as.numeric(G_Ettwa_Local_enR_2018))%>% 
+  replace_na(list(entry_rate_G=0))
+
+# density
+dfm_1998 = dfm_1998%>%
+  mutate(density_G = as.numeric(G_Ettwa_Local_den_1998))%>% 
+  replace_na(list(density_G=0))
+
+dfm_2008 = dfm_2008%>%
+  mutate(density_G = as.numeric(G_Ettwa_Local_den_2008))%>% 
+  replace_na(list(density_G=0))
+
+dfm_2018 = dfm_2018%>%
+  mutate(density_G = as.numeric(G_Ettwa_Local_den_2018))%>% 
+  replace_na(list(density_G=0))
+```
+
+### Map making
+
+This research set the breaks manually based on the rule that entry rate >2.58 or <-2.58 standard deviations away from the mean are significant at the 99% level (<1% chance that autocorrelation not present); >1.96 - <2.58 or <-1.96 to >-2.58 standard deviations are significant at the 95% level (<5% change that autocorrelation not present). >1.65 = 90% etc.
+```{r}
+# breaks1 = c(-5,-1,-0.7,-0.5,-0.1,0.1,0.5,0.7,1,5)
+breaks1<-c(-1000,-2.58,-1.96,-1.65,1.65,1.96,2.58,1000)
+
+tmap_mode("plot")
+GIColours = rev(brewer.pal(8, "RdBu"))
+df = dfm_1998  
+legend_name = "Gi* (1998)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+G_map_1998 = tm_shape(df) +
+    tm_polygons("density_G",
+        style="fixed",
+        breaks=breaks1,
+        palette=GIColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              size = 2.5,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              just = NA)+ 
+    tm_scale_bar(position=c("right", "bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+G_map_1998
+```
+
+
+```{r}
+df = dfm_2008
+legend_name = "Gi* (2008)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+G_map_2008 = tm_shape(df) +
+    tm_polygons("density_G",
+        style="fixed",
+        breaks=breaks1,
+        palette=GIColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              size = 2.5,
+              just = NA)+ 
+    tm_scale_bar(position=c("right","bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+G_map_2008
+```
+
+```{r}
+df = dfm_2018
+legend_name = "Gi* (2018)"
+title_name = ""
+# title_name = "Entry Rate in Travel to Work Area in England"
+#now plot on an interactive map
+G_map_2018 = tm_shape(df) +
+    tm_polygons("density_G",
+        style="fixed",
+        breaks=breaks1,
+        palette=GIColours,
+        midpoint=NA,
+        title=legend_name)+
+      tm_compass( north = 0,
+              type = "4star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              position = c("right","top"),
+              bg.color = NA,
+              bg.alpha = NA,
+              size = 2.5,
+              just = NA)+ 
+    tm_scale_bar(position=c("right","bottom"))+
+    tm_layout(main.title = title_name,
+              main.title.size = .85,
+              legend.text.size = 0.5)
+
+G_map_2018
+```
+
+arrange the map
+```{r}
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(
+        nrow = 2,
+        ncol = 3,
+        heights = c(0.1, 0.9))))
+grid.text("Entry Rate in Travel to Work Area in England", vp = viewport(layout.pos.row = 1, layout.pos.col = 1:3))
+print(G_map_1998, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(G_map_2008, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
+print(G_map_2018, vp = viewport(layout.pos.row = 2, layout.pos.col = 3))
+
+# tmap_save(here("Img","G_score_enR.png"),dpi=300)
+# tmap_arrange(G_map_1998,G_map_2008,G_map_2018,nrow = 1)
+```
+
+```{r}
+st_write(obj = dfm_1998, dsn = here("Dataset","Spatial","dfm_1998_output.geojson"))
+
+st_write(obj = dfm_2008, dsn = here("Dataset","Spatial","dfm_2008_output.geojson"))
+
+st_write(obj = dfm_2018, dsn = here("Dataset","Spatial","dfm_2018_output.geojson"))
+```
+
+```{r}
+dfm_1998 %>% head(
+)
+```
+
+
+# LISA TRY
+
+```{r}
+# neighbours2 <- poly2nb(dfm_1998, queen = FALSE)
+# listw <- nb2listw(neighbours2,zero.policy = TRUE)
+# listw
+```
+
+
+```{r}
+neighbours2 <- poly2nb(dfm_2008, queen = FALSE)
+listw = nb2listw(neighbours2, style = "W", zero.policy = TRUE)
+
+local = I_Ettwa_Local_enR_1998
+```
+
+
+```{r}
+
+tm_shape(dfm_1998) +
+  tm_fill(col = "density_I",
+          style = "quantile",
+          title = "local moran statistic",
+          midpoint = NA) 
+```
+
+```{r}
+local$Z.Ii
+```
+
+```{r}
+library(tidyverse)  # Modern data science workflow
+library(sf)
+library(sp)
+library(spdep)
+library(rgdal)
+library(rgeos)
+# library(tmap)
+library(tmaptools)
+library(spgwr)
+library(grid)
+library(gridExtra)
+
+```
+
+```{r}
+quadrant <- vector(mode="numeric",length=nrow(local))
+
+# centers the variable of interest around its mean
+m.qualification <- (dfm_1998$density - mean(dfm_1998$density)) %>% as.vector()
+
+# centers the local Moran's around the mean
+m.local <- (local$Ii- mean(local$Ii))%>% as.vector()
+
+# significance threshold
+signif <- 0.1 
+
+# builds a data quadrant
+quadrant[m.qualification>0 & m.local>0] <- 4  
+quadrant[m.qualification<0 & m.local<0] <- 1    
+quadrant[m.qualification<0 & m.local>0] <- 2
+quadrant[m.qualification>0 & m.local<0] <- 3
+quadrant[local$Z.Ii>signif] <- 0 
+
+# plot in r
+brks <- c(0,1,2,3,4)
+colors <- c("white","blue",rgb(0,0,1,alpha=0.4),rgb(1,0,0,alpha=0.4),"red")
+plot(dfm_1998$density,border="lightgray",col=colors[findInterval(quadrant,brks,all.inside=FALSE)])
+box()
+legend("bottomleft", legend = c("insignificant","low-low","low-high","high-low","high-high"),fill=colors,bty="n")
+```
+
+
+
+
+# Study Area
+
+```{r}
+# study area
+
+eng_ttwa = st_read(here::here("Dataset","Spatial","eng_ttwa_boundary.geojson"))
+
+eng_ttwa = eng_ttwa
+
+uk_ttwa = st_read(here::here("Dataset","Spatial","Travel_to_Work_Areas__December_2011__Generalised_Clipped_Boundaries_in_United_Kingdom.geojson"))
+
+```
+
+```{r}
+title_name =  ""
+
+tmap_options(check.and.fix = TRUE)
+
+study_area = tm_shape(uk_ttwa) +
+    tm_borders(alpha = 0.5, lwd = .15, lty = 1
+        )+
+    tm_fill(
+        )+
+    tm_shape(eng_ttwa)+
+      tm_fill(col = "blue", 
+            alpha = 0.3)+
+      tm_borders(col = "blue", lwd = .25, lty = 1, alpha = 0.5)+
+    tm_layout(main.title = title_name)+
+    tm_compass( north = 0,
+              type = "8star",
+              show.labels = TRUE,
+              cardinal.directions = c("N", "E", "S", "W"),
+              lwd = 1,
+              size = 2.5,
+              position = c("left","top"),
+              just = NA)+ 
+    tm_scale_bar(position=c("right", "bottom"))
+
+study_area
+```
+
 
 
